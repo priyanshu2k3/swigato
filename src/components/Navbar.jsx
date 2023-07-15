@@ -1,6 +1,9 @@
-import React from "react"
+import React,{useContext} from "react"
+import DataContext from "../context/DataContext"; 
 
 function Navbar(props) {
+  const {City}=useContext(DataContext)
+  console.log(City)
     return (<>
       <nav className="bg-white  border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -12,14 +15,13 @@ function Navbar(props) {
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               
               <li>
-                <div style={{width:"800px"}} className="flex  ">
+                <div style={{width:"800px"}} className="flex">
                   
               <select className="bg-gray-50 border rounded-l-lg text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option>Select Location</option>
-                <option value="">Kolkata</option>
-                <option value="">Chennai</option>
-                <option value="">Bangalore</option>
-                <option value="">Hyderabad</option>
+                {City? City.map((item)=>{<option>consle.log(item){item}</option>}):null}
+                
+                
             </select>
             <input type="text" className="bg-gray-50 border rounded-r-lg text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
               
@@ -40,7 +42,10 @@ function Navbar(props) {
         </div>
 
 
-        
+        <div className="text-white">
+            <p className="p-10 rounded-md">Delivery Restaurants in {}</p>
+<div className="grid grid-cols-4 gap-4"></div>
+</div>
       </nav>
       
     </>)
