@@ -1,49 +1,11 @@
 import React, { useState,useReducer, useEffect ,useContext} from "react";
 import DataContext from "../context/DataContext";
-import axios from "axios";
-
 
 function DeliveryPage(props){ 
 
-    const { Data,setData,City,setCity}=useContext(DataContext)
-    var arr=[]
-    var i=0
-    
-    async function fetchData() {
-        try {
-          const response = await axios.get('http://localhost:6969');
-          const data = response.data;
-          setData(data);
-          
-          Citylisting();
-        //   console.log(City,"setcity");
-          return null;
-        } catch (error) { 
-          console.error(error);
-          return null;
-        }
-      }
-
-    function Citylisting(){
-        if (Data === null){
-            return(null)
-        }
-        else {
-        var len=Data.length;
-        for (i=0;i<len;i++){
-            if(arr.includes(Data[i].location.city)){}
-            else{arr.push(Data[i].location.city)}
-
-        // console.log(arr)
-        }
-        setCity(arr);
-        return arr
-        }
-    }
-
-      useEffect(() => {fetchData();},[]);
+    const { Data,setData,City,setCity,filteredData}=useContext(DataContext)
   
-if (Data===null){return(<></>)}
+if (Data=== undefined || Data=== null){return(<></>)}
 else{
     return(
        
