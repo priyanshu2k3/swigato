@@ -32,10 +32,23 @@ export async function fetchData() {
       }
         }
         arr.sort()
-    //  console.log(cuisine,"inside fetching.js")
     
     }
     return arr;
+}
+
+
+export async function fetchMenu() {
+  try {
+    var resdata
+    await axios.get('http://localhost:6969/food')
+    .then((res)=>{ resdata=res.data})
+    return(resdata.data)
+  }
+  catch (error) { 
+    console.error(error);
+  }
+  return null
 }
 
 
