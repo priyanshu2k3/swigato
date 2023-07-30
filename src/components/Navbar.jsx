@@ -95,7 +95,7 @@ if(e.target.value ===""){
               
             </div></li>
               <li>
-                <a href="#" className="py-2 pl-3 pr-4  text-white  rounded md:bg-transparent  md:p-0 md:dark:bg-transparent" >SignUp/SignIn</a>
+                <a href="/signup" className="py-2 pl-3 pr-4  text-white  rounded md:bg-transparent  md:p-0 md:dark:bg-transparent" >SignUp/SignIn</a>
               </li>
             </ul>
           </div>
