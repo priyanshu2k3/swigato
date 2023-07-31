@@ -111,7 +111,7 @@ if(e.target.value ===""){
 
         <div className="text-white">
             <p className="p-10 rounded-md">Delivery Restaurants in {location}</p>
-<div className="grid grid-cols-4 gap-4"></div>
+<div className="grid grid-cols-4 gap-4"></div> 
 </div>
       </nav>
       
