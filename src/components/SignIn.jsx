@@ -30,7 +30,7 @@ function SignIn(props) {
           .then(res => {data = res;
             console.log(data.status);
             if(data.status===200){
-              Cookies.set('token',data.cookie);
+              // Cookies.set('token',data.cookie);
               alert("welcome Sirji Kya lengay Aap")
               navigate(presentURL)
             }
