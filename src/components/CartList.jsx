@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import DataContext from "../context/DataContext";
 import image from "../assets/foodimage.jpeg";
 import del from "../assets/delete.svg";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function CartList(props) {
-  const { foodData, cart, setCart } = useContext(DataContext);
+  const { foodData, cart, setCart ,cookie} = useContext(DataContext);
   const navigate = useNavigate();
   var arr = [];
 
@@ -49,12 +49,23 @@ function CartList(props) {
   }, [cart]);
 
 async function sendOrder(e){
+  if(!cookie  ){
+    alert("Need to sign in First")
+    navigate("/signin")
+    return
+  }
     e.preventDefault();
-    console.log("order sendt")
-    var res=await axios.post("http://localhost:6969/order",cart)
-    alert(res.data)
-    navigate("/food")
+try {
 
+ var headers={"token":cookie}
+  var payload={"cart":cart,"headers":headers}
+  var res=await axios.post("http://localhost:6969/order",payload) 
+  alert(res.data.msg)
+  navigate("/")
+} catch (error) {
+  console.log(error,"error") 
+}
+    
 }
 
   if (!cart) {
