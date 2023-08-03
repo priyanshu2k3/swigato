@@ -4,8 +4,9 @@ import DataContext from "../context/DataContext";
 import {filterLocation,filterterm} from "../functions/filters.js"
 
 
+
 function Navbar(props) {
-  const { City,location,setLocation,term,setTerm,Data,setData,copyData,setURL,presentURL,foodData,setFoodData,copyfoodData}=useContext(DataContext)
+  const { cookie,setCookies,City,location,setLocation,term,setTerm,Data,setData,copyData,setURL,presentURL,foodData,setFoodData,copyfoodData}=useContext(DataContext)
 
   setURL("/");
 
@@ -95,7 +96,9 @@ if(e.target.value ===""){
               
             </div></li>
               <li>
-                <a href="/signup" className="py-2 pl-3 pr-4  text-white  rounded md:bg-transparent  md:p-0 md:dark:bg-transparent" >SignUp/SignIn</a>
+                <a href="/signup" className="py-2 pl-3 pr-4  text-white  rounded md:bg-transparent  md:p-0 md:dark:bg-transparent" >
+                  {cookie?"Welcome Sir/Mam":<>SignIn/SignUp</>}
+                  </a>
               </li>
             </ul>
           </div>
@@ -111,6 +114,7 @@ if(e.target.value ===""){
 
         <div className="text-white">
             <p className="p-10 rounded-md">Delivery Restaurants in {location}</p>
+            
 <div className="grid grid-cols-4 gap-4"></div> 
 </div>
       </nav>

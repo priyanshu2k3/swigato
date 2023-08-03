@@ -9,11 +9,12 @@ import {fetchData} from "./functions/fetching.js"
 import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
 // import SignIn from "./components/SignIn.jsx";
 import SignUp from "./components/SignUp.jsx";
+import CartList from "./components/CartList.jsx";
 
 
 function App() {
 
-  const { setCopyData,setData,setCity,presentURL,loggedIn,setLoggedIn}=useContext(DataContext)
+  const { setCopyData,setData,setCity,presentURL,cookie,setCookies}=useContext(DataContext)
 
   async function initialization(){
     const fetchedData=await fetchData()
@@ -21,10 +22,25 @@ function App() {
     // {console.log(fetchedData,"app.js")
     setCity(fetchedData.cityList);
     setCopyData(fetchedData.data)
-    setData(fetchedData.data);}
-    if(document.cookie){} 
+    setData(fetchedData.data);
+    setCookies(getCookie("swigato"))
+  }
+
     
     return(null)
+}
+
+function getCookie(cookieName) {
+  const cookies = document.cookie.split("; ");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].split("=");
+    const name = decodeURIComponent(cookie[0]);
+    const value = decodeURIComponent(cookie[1]);
+    if (name === cookieName) {
+      return value;
+    }
+  }
+  return null; // Return null if the cookie is not found
 }
 
       useEffect(() => {initialization()},[]);
@@ -44,6 +60,7 @@ function App() {
     } />
     <Route path="/signup" element={<SignUp/>}/>
     <Route path="/signin" element={<SignIn/>}/>
+    <Route path="/cartlist" element={<CartList/>}/>
     </Routes>
     <Footer />
   </div>

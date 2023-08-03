@@ -28,7 +28,7 @@ function SignUp(props) {
                           "password":Password,
                         });
            
-          axios.post('http://localhost:6969/signup?',vals)
+          axios.post('http://localhost:6969/signup',vals)
           .then(res => {data = res;
             console.log(data.status);
             if(data.status===200){
@@ -95,7 +95,7 @@ function SignUp(props) {
         </div>
 
         <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handelsignup}>Create your account</button>
-   <div className='text-white hover:text-blue-500'><a href="/signin">Click here to SignIn</a></div>
+   <div ><p className='text-green-500'>Already have acount</p><a className='text-white hover:text-blue-500' href="/signin">Click here to SignIn</a></div>
     </form>
 </div>
 

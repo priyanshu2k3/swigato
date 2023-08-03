@@ -3,12 +3,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import image from "../assets/draw2.webp"
 import DataContext from '../context/DataContext';
+import Cookies from 'js-cookie';
 
 
 
 function SignIn(props) {
   const navigate = useNavigate();
-  const {presentURL}=useContext(DataContext)
+  const {presentURL,setUserName,cookie,setCookies}=useContext(DataContext)
 
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
@@ -21,24 +22,29 @@ function SignIn(props) {
         e.preventDefault()
         console.log(Email,Password)
               
-            const vals=({ 
+            var vals={ 
                           "email":Email,
-                          "password":Password,
-                        });
+                          "password":Password
+                        };
         try {
-          axios.get('http://localhost:6969/signin?',vals)
-          .then(res => {data = res;
-            console.log(data.status);
-            if(data.status===200){
+          axios.post('http://localhost:6969/signin', (vals))
+          // axios.get('http://localhost:6969/signin',vals)
+          .then((res) => {
+            console.log(res)
+            // if(res.status===417){console.log(res) }
+            if(res.status===200){
               // Cookies.set('token',data.cookie);
               alert("welcome Sirji Kya lengay Aap")
+              console.log(res)
+              Cookies.set("swigato", res.data.cookie, { expires: 1});
+              setCookies(res.data.name)
               navigate(presentURL)
             }
             else{alert("there is some error pls check your password and email")}
           })
   
         } catch (error) {
-          console.log(error)
+          console.log(error,"this one fire")
         }
       }
 
@@ -67,7 +73,7 @@ function SignIn(props) {
 
         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
     <form className="space-y-6" action="#">
-        <h5 className="text-xl font-medium text-gray-900 dark:text-white">SignUp to our platform</h5>
+        <h5 className="text-xl font-medium text-gray-900 dark:text-white">SignIn to your Account</h5>
         
         <div>
             <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >Your email</label>
@@ -78,7 +84,7 @@ function SignIn(props) {
             <input onChange={handelOnChange} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
         </div>
         <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handelsignIn}>Log In</button>
-        <div className='text-white hover:text-blue-500'><a href="/signup">Click here to SignUp</a></div>
+        <div ><p className='text-red-500'>Don't have acount</p><a className='text-white hover:text-blue-500' href="/signup">Click here to SignUp</a></div>
     </form>
 </div>
 
