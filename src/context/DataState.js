@@ -13,7 +13,7 @@ function DataProvider(props) {
   const [loggedIn,setLoggedIn] =useState("false")
   const [cookie,setCookies] =useState("")
   const [cart,setCart] =useState([]);
-  const [backendURL,setBackendURL]=useState("")
+  const [backendURL,setBackendURL]=useState("http://65.2.137.88:6969")
 
   function uptoDate(val){
     setData(val)

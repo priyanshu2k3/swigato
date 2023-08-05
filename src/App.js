@@ -14,17 +14,13 @@ import CartList from "./components/CartList.jsx";
 
 function App() {
 
-  const {backendURL,setBackendURL,setCopyData,setData,setCity,presentURL,cookie,setCookies,}=useContext(DataContext)
-  const BACKEND_URL= process.env.REACT_APP_BACKEND_URL;
-   setBackendURL(((!BACKEND_URL ||BACKEND_URL=="" )? "":BACKEND_URL));
-  setBackendURL(BACKEND_URL)
+  const {backendURL,setCopyData,setData,setCity,presentURL,cookie,setCookies,}=useContext(DataContext)
   async function initialization(){
     
-    console.log(backendURL,"inside the app.js")
+    // console.log(backendURL,"hello","inside the app.js")
     const fetchedData=await fetchData(String(backendURL))
     
     if (fetchedData !==null){
-    // {console.log(fetchedData,"app.js")
     setCity(fetchedData.cityList);
     setCopyData(fetchedData.data)
     setData(fetchedData.data);

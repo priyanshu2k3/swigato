@@ -3,7 +3,7 @@ import axios from "axios";
 export async function fetchData(backendURL) {
   var cityList=[]
     try {
-      console.log(backendURL,"inside the fetch data")
+      // console.log(backendURL,"inside the fetch data")
       const response = await axios.get(backendURL+"/restaurant");
 
       const data = response.data;
