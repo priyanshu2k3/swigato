@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 
 function SignIn(props) {
   const navigate = useNavigate();
-  const {presentURL,setUserName,cookie,setCookies}=useContext(DataContext)
+  const {presentURL,setUserName,cookie,setCookies,backendURL}=useContext(DataContext)
 
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
@@ -27,7 +27,7 @@ function SignIn(props) {
                           "password":Password
                         };
         try {
-          axios.post('http://localhost:6969/signin', (vals))
+          axios.post(backendURL+'/signin', (vals))
           // axios.get('http://localhost:6969/signin',vals)
           .then((res) => {
             console.log(res)

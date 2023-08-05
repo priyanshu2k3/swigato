@@ -12,14 +12,15 @@ function DataProvider(props) {
   const [copyfoodData,setCopyfoodData]=useState([]);
   const [loggedIn,setLoggedIn] =useState("false")
   const [cookie,setCookies] =useState("")
-  const [cart,setCart] =useState([])
+  const [cart,setCart] =useState([]);
+  const [backendURL,setBackendURL]=useState("")
 
   function uptoDate(val){
     setData(val)
   }
 
   return (
-    <DataContext.Provider value={{cookie,setCookies,cart,setCart,loggedIn,setLoggedIn, Data,setData ,City,setCity,location,setLocation,term,setTerm,setCopyData,copyData,foodData,setFoodData,presentURL,setURL,copyfoodData,setCopyfoodData}}>
+    <DataContext.Provider value={{backendURL,setBackendURL,cookie,setCookies,cart,setCart,loggedIn,setLoggedIn, Data,setData ,City,setCity,location,setLocation,term,setTerm,setCopyData,copyData,foodData,setFoodData,presentURL,setURL,copyfoodData,setCopyfoodData}}>
       {props.children}
     </DataContext.Provider>
   );

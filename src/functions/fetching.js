@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export async function fetchData() {
+export async function fetchData(backendURL) {
   var cityList=[]
     try {
-      const response = await axios.get('http://localhost:6969/restaurant');
+      console.log(backendURL,"inside the fetch data")
+      const response = await axios.get(backendURL+"/restaurant");
 
       const data = response.data;
       // console.log(data)      
@@ -41,10 +42,10 @@ export async function fetchData() {
 }
 
 
-export async function fetchMenu() {
+export async function fetchMenu(backendURL) {
   try {
     var resdata
-    await axios.get('http://localhost:6969/food')
+    await axios.get(backendURL+'/food')
     .then((res)=>{ resdata=res.data})
     return(resdata.data)
   }

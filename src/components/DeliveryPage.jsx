@@ -5,13 +5,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 function DeliveryPage(props){ 
     const navigate=useNavigate();
-    const { Data,setView,foodData,setFoodData,setURL}=useContext(DataContext)
+    const { Data,setView,foodData,setFoodData,setURL,backendURL}=useContext(DataContext)
 
     setURL("/");
 
     async function View(e){
         e.preventDefault()
-        const data=await fetchMenu();
+        const data=await fetchMenu(backendURL);
          console.log(data)
         setFoodData(data)
         navigate("/food")

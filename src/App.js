@@ -14,16 +14,22 @@ import CartList from "./components/CartList.jsx";
 
 function App() {
 
-  const { setCopyData,setData,setCity,presentURL,cookie,setCookies}=useContext(DataContext)
-
+  const {backendURL,setBackendURL,setCopyData,setData,setCity,presentURL,cookie,setCookies,}=useContext(DataContext)
+  const BACKEND_URL= process.env.REACT_APP_BACKEND_URL;
+   setBackendURL(((!BACKEND_URL ||BACKEND_URL=="" )? "":BACKEND_URL));
+  setBackendURL(BACKEND_URL)
   async function initialization(){
-    const fetchedData=await fetchData()
+    
+    console.log(backendURL,"inside the app.js")
+    const fetchedData=await fetchData(String(backendURL))
+    
     if (fetchedData !==null){
     // {console.log(fetchedData,"app.js")
     setCity(fetchedData.cityList);
     setCopyData(fetchedData.data)
     setData(fetchedData.data);
     setCookies(getCookie("swigato"))
+    
   }
 
     

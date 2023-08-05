@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import image from "../assets/image.svg"
+import DataContext from '../context/DataContext';
 
 
 
@@ -14,6 +15,7 @@ function SignUp(props) {
     const [Email, setEmail] = useState();
     const [Password, setPassword] = useState();
     const [ConfirmPassword, setConfirmPassword] = useState();
+   const {backendURL}= useContext(DataContext)
 
 
 
@@ -28,7 +30,7 @@ function SignUp(props) {
                           "password":Password,
                         });
            
-          axios.post('http://localhost:6969/signup',vals)
+          axios.post(backendURL+'/signup',vals)
           .then(res => {data = res;
             console.log(data.status);
             if(data.status===200){

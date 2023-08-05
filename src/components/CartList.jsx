@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function CartList(props) {
-  const { foodData, cart, setCart ,cookie} = useContext(DataContext);
+  const { backendURL,foodData, cart, setCart ,cookie} = useContext(DataContext);
   const navigate = useNavigate();
   var arr = [];
 
@@ -59,7 +59,7 @@ try {
 
  var headers={"token":cookie}
   var payload={"cart":cart,"headers":headers}
-  var res=await axios.post("http://localhost:6969/order",payload) 
+  var res=await axios.post(backendURL+"/order",payload) 
   alert(res.data.msg)
   navigate("/")
 } catch (error) {
