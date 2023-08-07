@@ -32,9 +32,9 @@ function SignIn(props) {
           .then((res) => {
             console.log(res)
             // if(res.status===417){console.log(res) }
-            if(res.status===200){
+            if(res.data.status==200){
               // Cookies.set('token',data.cookie);
-              alert("welcome Sirji Kya lengay Aap")
+              alert("welcome back ")
               console.log(res)
               Cookies.set("swigato", res.data.cookie, { expires: 1});
               setCookies(res.data.name)

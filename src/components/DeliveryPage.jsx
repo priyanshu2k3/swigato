@@ -50,7 +50,7 @@ else{
             <span className="text-3xl font-bold  dark:text-white">Rs{item.average_cost_for_two}</span><p className="p-1">for 2 people</p>
             
         </div >
-        <a href="/food" onClick={View} className="ml-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</a>
+        <a href="#" onClick={View} className="ml-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</a>
         </div>
 </div>
 </div>))}

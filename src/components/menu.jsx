@@ -13,11 +13,11 @@ function Menu(){
     const n=0
     const [list,setList]=useState([])
  
-    const {cart,setCart,foodData,setFoodData,setURL,setCopyfoodData}=useContext(DataContext)
+    const {cart,setCart,foodData,setFoodData,setURL,setCopyfoodData,backendURL}=useContext(DataContext)
     setURL("/food")
    
 async function View(){
-    const data=await fetchMenu();
+    const data=await fetchMenu(backendURL);
     setFoodData(data)
     setCopyfoodData(data)
 } 
